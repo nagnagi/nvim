@@ -34,8 +34,17 @@ return {
         end
       },
     }
-    -- ここでlazygitを開く設定を追加している
+
     local Terminal  = require('toggleterm.terminal').Terminal
+
+    -- keybind
+    vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical size=20<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal size=10<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tn", "<cmd>ToggleTerm direction=tab<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { noremap=true, silent=true })
+
+    -- ここでlazygitを開く設定を追加している
     local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
     function _lazygit_toggle()

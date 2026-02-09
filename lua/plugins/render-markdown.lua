@@ -7,7 +7,7 @@ return {
   },
   opts = {},
   config = function ()
-	  vim.keymap.set("n", "<leader>p", ":RenderMarkdown toggle<cr>")
+	  vim.keymap.set("n", "<leader>pm", ":RenderMarkdown toggle<cr>")
   end,
 }
 
