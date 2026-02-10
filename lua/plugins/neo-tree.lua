@@ -26,7 +26,6 @@ return {
   config = function ()
 	  vim.keymap.set("n", "<leader>ee", ":Neotree filesystem reveal focus<cr>")
 	  vim.keymap.set("n", "<leader>ef", ":Neotree filesystem float<cr>")
-    vim.keymap.set("n", "<leader>et", ":Neotree filesystem toggle<cr>")
     vim.keymap.set("n", "<leader>eh", ":Neotree filesystem left<cr>")
     vim.keymap.set("n", "<leader>ed", ":Neotree document_symbols left<cr>")
     vim.keymap.set("n", "<leader>et", ":Neotree toggle<cr>")
