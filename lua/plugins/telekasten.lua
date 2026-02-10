@@ -1,8 +1,19 @@
+-- [[maybe unused]]
 return {
   "nvim-telekasten/telekasten.nvim",
+  dependencies = {
+    "mattn/calendar-vim"
+  },
   config = function ()
     require("telekasten").setup({
       home = vim.fn.expand("~/zettelkasten"),
+      dailies = vim.fn.expand("~/zettelkasten/daily"),
+      templates = vim.fn.expand("~/zettelkasten/templates"),
+      media = vim.fn.expand("~/zettelkasten/media"),
+      tags = vim.fn.expand("~/zettelkasten/tags"),
+      weeklies = vim.fn.expand("~/zk/weekly"),
+      todolist = vim.fn.expand("~/zk/todo")
+
     })
 
     -- Launch panel if nothing is typed after <leader>z
@@ -19,7 +30,7 @@ return {
     vim.keymap.set("n", "<leader>mI", "<cmd>Telekasten insert_img_link<CR>")
 
     -- Call insert link automatically when we start typing a link
-    vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
+    vim.keymap.set("i", "<leader>ml", "<cmd>Telekasten insert_link<CR>")
 
   end
 }

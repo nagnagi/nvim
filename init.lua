@@ -11,3 +11,5 @@ vim.cmd("colorscheme catppuccin-mocha")
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "jj", "<cr>")
 
+require("user.vibe")
+
