@@ -10,10 +10,12 @@ require("config.lazy")
 vim.opt.number = true
 vim.opt.clipboard = "unnamedplus"
 vim.o.updatetime = 500
+vim.env.MASON_PYTHON = "/home/nag/.local/bin/python3.13"
+
 -- vim.cmd("colorscheme onedark")
 vim.cmd("colorscheme catppuccin-mocha")
 
-require("user.ikeymap")
+require("user.keymap.init")
 require("user.layout")
 require("user.vibe")
 

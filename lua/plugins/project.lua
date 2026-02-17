@@ -3,14 +3,9 @@ return {
   config = function()
     require("project_nvim").setup({
       manual_mode = false,
-      detection_methods = { "lsp", "pattern" },
+      detection_methods = { "pattern" },
       patterns = {
         ".git",
-        "package.json",
-        "Makefile",
-        "go.mod",
-        "Cargo.toml",
-        ".gitignore",
       },
       ignore_lsp = {},
       exclude_dirs = {},

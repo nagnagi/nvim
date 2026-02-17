@@ -30,20 +30,22 @@ return {
         ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-	["<C-k>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
 	["<C-l>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
-	{ name = "nvim_lsp_signature_help"},
+	      -- { name = "nvim_lsp_signature_help"},
         { name = "luasnip" }, -- For luasnip users.
         { name = "orgmode" },
       }, {
         { name = "buffer" },
         { name = "path" },
       }),
+      performance = {
+        fetching_timeout = 2000,
+      },
       experimental = {
 	ghost_text = true,
       },

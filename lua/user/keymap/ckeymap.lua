@@ -1,0 +1,7 @@
+vim.keymap.set('c', '<C-b>', '<Left>', { noremap = true })
+vim.keymap.set('c', '<C-f>', '<Right>', { noremap = true })
+vim.keymap.set('c', '<C-a>', '<Home>', { noremap = true })
+vim.keymap.set('c', '<C-e>', '<End>', { noremap = true })
+vim.keymap.set('c', '<C-d>', '<Del>', { noremap = true })
+vim.keymap.set('c', '<C-k>', '<C-o>D', { noremap = true })
+

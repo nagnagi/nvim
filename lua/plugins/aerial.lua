@@ -15,6 +15,20 @@ return {
         placement = "window",
         resize_to_content = false,
       },
+      filter_kind = {
+        "Class",
+        "Constant",
+        "Constructor",
+        "Enum",
+        "Function",
+        "Interface",
+        "Module",
+        "Method",
+        "Struct",
+        "Type",
+        "String",
+        "Namespace",
+      },
       keymaps = {
         ["?"] = "actions.show_help",
         ["g?"] = "actions.show_help",
@@ -31,11 +45,11 @@ return {
         ["]]"] = "actions.next_up",
         ["q"] = "actions.close",
       },
+      update_on_insert = true,
     })
 
-    vim.keymap.set('n', '<leader>ao', '<cmd>AerialOpen<CR>', { desc = 'Aerial open' })
+    vim.keymap.set('n', '<leader>aa', '<cmd>AerialOpen<CR>', { desc = 'Aerial open' })
     vim.keymap.set('n', '<leader>at', '<cmd>AerialToggle<CR>', { desc = 'Aerial toggle' })
-    vim.keymap.set('n', '<leader>ad', '<cmd>AerialGoToSymbol<CR>', { desc = 'Aerial go to symbol' })
 
     -- neo-tree と aerial を一緒にトグル
     vim.keymap.set('n', '<leader>ae', '<cmd>AerialToggle<CR><cmd>Neotree toggle<CR>', { desc = 'Toggle neo-tree and aerial' })

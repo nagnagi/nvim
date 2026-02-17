@@ -39,18 +39,14 @@ return {
 
     -- keybind
     vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical size=40 1<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal size=10 2<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tn", "<cmd>ToggleTerm direction=tab 3<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float 4<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical size=40<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal size=10<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tn", "<cmd>ToggleTerm direction=tab<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { noremap=true, silent=true })
 
     function _G.set_terminal_keymaps()
       local opts = {buffer = 0}
-      vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-      vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-      vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-      vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-      vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+      vim.keymap.set('t', '<C-x>', [[<C-\><C-n>]], opts)
       vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
     end
 
@@ -62,7 +58,6 @@ return {
       cmd = "lazygit",
       hidden = true,
       direction = "float",
-      count = 5,
     })
 
     function _lazygit_toggle()
