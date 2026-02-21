@@ -8,5 +8,4 @@ vim.keymap.set("i", "<C-b>", "<left>",  { noremap = true })
 vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true })
 vim.keymap.set("i", "<C-e>", "<End>",  { noremap = true })
 vim.keymap.set("i", "<C-d>", "<Del>",  { noremap = true })
-vim.keymap.set('i', '<C-k>', '<C-o>D', { noremap = true })
 

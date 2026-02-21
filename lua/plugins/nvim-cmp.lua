@@ -15,6 +15,12 @@ return {
     local types = require('cmp.types')
 	  vim.opt.completeopt = { "menu", "menuone", "noselect" }
     cmp.setup({
+      enabled = function ()
+        if vim.fn.exists("*skkeleton#is_enabled") == 1 then
+          return vim.fn["skkeleton#is_enabled"]() ~= true
+        end
+        return true
+      end,
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
@@ -31,7 +37,7 @@ return {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-	["<C-l>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	      ["<C-l>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -42,14 +48,15 @@ return {
       }, {
         { name = "buffer" },
         { name = "path" },
+        { name = "skkeleton" },
       }),
       performance = {
         fetching_timeout = 2000,
       },
       experimental = {
-	ghost_text = true,
+	      ghost_text = true,
       },
-      })
+    })
 
   end
 }
