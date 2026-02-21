@@ -45,6 +45,7 @@ return {
       vim.fn["skkeleton#register_kanatable"]('rom', {
         ['jk'] = 'escape',
         ['j-'] = {'-'},
+        ['j/'] = {'・'},
       })
 
       local opt = {}
