@@ -20,7 +20,7 @@ return {
       },
       signs_staged_enable = true,
       signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-      numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+      numhl      = true,  -- Toggle with `:Gitsigns toggle_numhl`
       linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
       watch_gitdir = {
@@ -51,5 +51,11 @@ return {
         col = 1
       },
     }
+    local opt = {}
+    vim.api.nvim_set_keymap("n", "<leader>hn", "<cmd>Gitsigns next_hunk<cr>", opt)
+    vim.api.nvim_set_keymap("n", "<leader>hp", "<cmd>Gitsigns prev_hunk<cr>", opt)
+    vim.api.nvim_set_keymap("n", "<leader>ha", "<cmd>Gitsigns stage_hunk<cr>", opt)
+    vim.api.nvim_set_keymap("n", "<leader>hx", "<cmd>Gitsigns undo_stage_hunk<cr>", opt)
+    vim.api.nvim_set_keymap("n", "<leader>hb", "<cmd>Gitsigns blame<cr>", opt)
   end
 }

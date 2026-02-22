@@ -12,13 +12,13 @@ return {
       org_agenda_files = '~/orgfiles/**/*',
       org_default_notes_file = '~/orgfiles/refile.org',
       org_todo_keywords = {'TODO(t)', 'NEXT(n)', 'WAITING(w)', 'INPROGRESS(p)',  '|', 'DONE(d)', 'CANCELLED(c)'},
+      org_startup_indented = true,
       org_todo_keyword_faces = {
         INPROGRESS = ':foreground blue :weight bold',
         WAITING = ':foreground gray :weight bold',
         NEXT = ':foreground yellow :weight bold',
       },
       org_hide_leading_stars = true,
-      org_indent_mode = 'indent',
       org_capture_templates = {
         c = {
           description = 'Capture',
@@ -52,6 +52,8 @@ return {
     
     -- LSPサポートの有効化
     vim.lsp.enable('org')
+    
+    vim.cmd("Org indent_mode")
     
     -- Load telescope-orgmode extension
     require('telescope').load_extension('orgmode')

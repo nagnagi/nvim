@@ -108,7 +108,29 @@ return {
       { "<leader>oc", "<cmd>Org capture<cr>", desc = "Org capture" },
 
       -- ===== Standalone =====
+      { "<leader>l", group = "lazy tools" },
       { "<leader>lg", "<cmd>lua _lazygit_toggle()<cr>", desc = "LazyGit" },
+      { "<leader>ld", "<cmd>lua _lazydocker_toggle()<cr>", desc = "LazyDocker" },
+      { "<leader>lb", "<cmd>lua _gobang_toggle()<cr>", desc = "GoBang" },
+
+      -- ===== Git ===
+      { "<leader>h", group = "git" },
+      { "<leader>hn", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk" },
+      { "<leader>hp", "<cmd>Gitsigns prev_hunk<cr>", desc = "Prev Hunk" },
+      { "<leader>ha", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
+      { "<leader>hx", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
+      { "<leader>hb", "<cmd>Gitsigns blame<cr>", desc = "Blame" },
+      { "<leader>hh", "<cmd>DiffviewOpen HEAD~1<CR>", desc = "Diff (~)"},
+      { "<leader>hf", "<cmd>DiffviewFileHistory %<CR>", desc = "Diff History"},
+      { "<leader>hc", "<cmd>DiffviewClose<CR>", desc = "Close Diff View"},
+      { "<leader>hd", "<cmd>Diffview<CR>", desc = "Open Diff View"},
+
+      -- ===== GitHub =====
+      { "<leader>g", group = "GitHub" },
+      { "<leader>gi", "<CMD>Octo issue list<CR>", desc = "List GitHub Issues", },
+      { "<leader>gp", "<CMD>Octo pr list<CR>", desc = "List GitHub PullRequests", },
+      { "<leader>gd", "<CMD>Octo discussion list<CR>", desc = "List GitHub Discussions", },
+      { "<leader>gn", "<CMD>Octo notification list<CR>", desc = "List GitHub Notifications", },
     })
   end,
 }

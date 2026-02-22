@@ -10,13 +10,14 @@ return {
         }
       },
       custom_highlights = function(colors)
+        -- telescopeの設定
         return {
           TelescopeBorder = { fg = colors.blue },
           TelescopePromptBorder = { fg = colors.mauve },
           TelescopePromptNormal = { bg = "none" },
-          TelescopePromptTitle = { fg = colors.mauve, bg = "none" }, -- 背景を消す
-          TelescopePreviewTitle = { fg = colors.green, bg = "none" }, -- 背景を消す
-          TelescopeResultsTitle = { fg = colors.blue, bg = "none" },  -- 背景を消す
+          TelescopePromptTitle = { fg = colors.mauve, bg = "none" },
+          TelescopePreviewTitle = { fg = colors.green, bg = "none" },
+          TelescopeResultsTitle = { fg = colors.blue, bg = "none" },
         }
       end
     })

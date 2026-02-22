@@ -37,15 +37,16 @@ return {
       vim.fn["skkeleton#initialize"]()
 
       local mapped_keys = vim.g['skkeleton#mapped_keys']
-      table.insert(mapped_keys, 'x')
+      table.insert(mapped_keys, 'v')
       vim.g['skkeleton#mapped_keys'] = mapped_keys
 
-      vim.fn["skkeleton#register_keymap"]('input', 'x', 'henkanPoint')
+      vim.fn["skkeleton#register_keymap"]('input', 'v', 'henkanPoint')
 
       vim.fn["skkeleton#register_kanatable"]('rom', {
         ['jk'] = 'escape',
         ['j-'] = {'-'},
         ['j/'] = {'・'},
+        ['vv'] = {'v'},
       })
 
       local opt = {}

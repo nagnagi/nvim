@@ -53,7 +53,7 @@ return {
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-    -- ここでlazygitを開く設定を追加している
+    -- lazygit
     local lazygit = Terminal:new({
       cmd = "lazygit",
       hidden = true,
@@ -65,7 +65,32 @@ return {
     end
 
     vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+    
+    -- lazygit
+    local lazydocker = Terminal:new({
+      cmd = "lazydocker",
+      hidden = true,
+      direction = "float",
+    })
 
+    function _lazydocker_toggle()
+      lazydocker:toggle()
+    end
+
+    vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>lua _lazydocker_toggle()<CR>", {noremap = true, silent = true})
+
+    -- lazygit
+    local gobang = Terminal:new({
+      cmd = "gobang",
+      hidden = true,
+      direction = "float",
+    })
+
+    function _gobang_toggle()
+      gobang:toggle()
+    end
+
+    vim.api.nvim_set_keymap("n", "<leader>lb", "<cmd>lua _gobang_toggle()<CR>", {noremap = true, silent = true})
   end
 }
 
