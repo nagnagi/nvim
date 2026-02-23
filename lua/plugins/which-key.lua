@@ -72,6 +72,7 @@ return {
       { "<leader>r", group = "run" },
       { "<leader>rr", "<cmd>OverseerRun<cr>", desc = "Run task" },
       { "<leader>rt", "<cmd>OverseerToggle<cr>", desc = "Toggle" },
+      { "<leader>ro", "<cmd>OverseerOpen<cr>", desc = "Open Overseer Menu" },
 
       -- ===== Memo (Telekasten) =====
       { "<leader>m", group = "memo" },
