@@ -91,6 +91,32 @@ return {
     end
 
     vim.api.nvim_set_keymap("n", "<leader>lb", "<cmd>lua _gobang_toggle()<CR>", {noremap = true, silent = true})
+
+    -- lazysql
+    local lazysql = Terminal:new({
+      cmd = "lazysql",
+      hidden = true,
+      direction = "float",
+    })
+
+    function _lazysql_toggle()
+      lazysql:toggle()
+    end
+
+    vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>lua _lazysql_toggle()<CR>", {noremap = true, silent = true})
+
+    -- gh dash
+    local gh_dash = Terminal:new({
+      cmd = "gh dash",
+      hidden = true,
+      direction = "float",
+    })
+
+    function _gh_dash_toggle()
+      gh_dash:toggle()
+    end
+
+    vim.api.nvim_set_keymap("n", "<leader>lh", "<cmd>lua _gh_dash_toggle()<CR>", {noremap = true, silent = true})
   end
 }
 

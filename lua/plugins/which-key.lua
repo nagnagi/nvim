@@ -113,6 +113,8 @@ return {
       { "<leader>lg", "<cmd>lua _lazygit_toggle()<cr>", desc = "LazyGit" },
       { "<leader>ld", "<cmd>lua _lazydocker_toggle()<cr>", desc = "LazyDocker" },
       { "<leader>lb", "<cmd>lua _gobang_toggle()<cr>", desc = "GoBang" },
+      { "<leader>ls", "<cmd>lua _lazysql_toggle()<CR>", desc = "LazySQL" },
+      { "<leader>lh", "<cmd>lua _gh_dash_toggle()<CR>", desc = "gh dash" },
 
       -- ===== Git ===
       { "<leader>h", group = "git" },

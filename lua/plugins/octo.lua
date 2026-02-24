@@ -34,7 +34,7 @@ return {
       desc = "List GitHub Notifications",
     },
     {
-      "<leader>os",
+      "<leader>gs",
       function()
         require("octo.utils").create_base_search_command { include_current_repo = true }
       end,
