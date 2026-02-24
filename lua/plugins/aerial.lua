@@ -49,6 +49,9 @@ return {
     })
 
     vim.keymap.set('n', '<leader>aa', '<cmd>AerialOpen<CR>', { desc = 'Aerial open' })
+    vim.keymap.set('n', '<leader>ah', '<cmd>AerialOpen left<CR>', { desc = 'Aerial open' })
+    vim.keymap.set('n', '<leader>al', '<cmd>AerialOpen right<CR>', { desc = 'Aerial open' })
+    vim.keymap.set('n', '<leader>af', '<cmd>AerialOpen float<CR>', { desc = 'Aerial open' })
     vim.keymap.set('n', '<leader>at', '<cmd>AerialToggle<CR>', { desc = 'Aerial toggle' })
 
     -- neo-tree と aerial を一緒にトグル
