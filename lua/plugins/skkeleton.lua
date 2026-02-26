@@ -13,7 +13,7 @@ return {
       print("download SKK Dictionary...")
 
       if vim.fn.isdirectory(dict_dir) == 0 then
-        vim.fn.mkdir(dict_path, "p")
+        vim.fn.mkdir(dict_dir, "p")
       end
 
       local response = curl.get("https://skk-dev.github.io/dict/SKK-JISYO.L.gz", {
@@ -30,7 +30,7 @@ return {
 
     local function setup_skkeleton()
       vim.fn["skkeleton#config"]({
-        globalDictionaries = {'~/.skk/SKK-JISYO.L'},
+        globalDictionaries = {dict_path},
         keepState = true,
       })
 
