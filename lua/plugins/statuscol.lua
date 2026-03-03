@@ -9,17 +9,6 @@ return {
       segments = {
         {
           sign = {
-            namespace = { 'gitsigns' },
-            maxwidth = 1,
-            colwidth = 1,
-            wrap = true,
-          },
-        },
-        {
-          text = { ' ' }
-        },
-        {
-          sign = {
             namespace = { 'diagnostic' },
             maxwidth = 1,
           },
