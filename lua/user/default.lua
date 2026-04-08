@@ -23,9 +23,6 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.cindent = true
 
-vim.g.mapleader = "\\"
-vim.g.maplocalleader = "\\"
-
 -- search
 vim.opt.hlsearch = true
 vim.opt.incsearch = true

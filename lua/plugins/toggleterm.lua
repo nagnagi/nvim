@@ -40,8 +40,8 @@ return {
     -- keybind
     vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap=true, silent=true })
     vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical size=40<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal size=10<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tn", "<cmd>ToggleTerm direction=tab<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal size=10<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tc", "<cmd>ToggleTerm direction=tab<CR>", { noremap=true, silent=true })
     vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { noremap=true, silent=true })
 
     function _G.set_terminal_keymaps()

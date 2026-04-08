@@ -6,7 +6,7 @@ return {
 	    local lsp_servers = { "lua_ls", "pyright", "ruff", "ts_ls", "html", "yamlls", "jsonls" }
 	    local diagnostics = { "typos_lsp" }
 	    require("mason-lspconfig").setup {
-	      ensure_installed = vim.tbl_flatten({ lsp_servers, diagnostics }),
+	      ensure_installed = vim.iter({ lsp_servers, diagnostics }):flatten():totable(),
 	    }
 	    vim.api.nvim_create_autocmd("CursorHold", {
                 group = vim.api.nvim_create_augroup("LspAutoHover", { clear = true }),
