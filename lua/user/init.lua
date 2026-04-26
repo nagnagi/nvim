@@ -1,5 +1,5 @@
 -- vim config
-require("user.default")
+require("user.option")
 require("user.autocmd")
 
 -- layout
