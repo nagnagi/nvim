@@ -34,5 +34,7 @@ vim.opt.cursorline = true
 -- color
 vim.opt.termguicolors = true
 vim.cmd("colorscheme catppuccin-mocha")
--- vim.cmd("colorscheme onedark")
+
+-- plugin
+vim.cmd("packadd nvim.undotree")
 

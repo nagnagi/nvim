@@ -13,3 +13,5 @@ vim.keymap.set("n", "<C-p>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<leader><leader>d", "<cmd>LayoutDefault<cr>")
 vim.keymap.set("n", "<leader><leader>f", "<cmd>LayoutFull<cr>")
 
+vim.keymap.set("n", "U", "<cmd>Undotree<cr>")
+
