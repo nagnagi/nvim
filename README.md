@@ -1,6 +1,6 @@
-# Neovim Configuration - Development Hub
+# nagnagi Neovim Configurations
 
-Neovimを開発の拠点にするための統合設定です。プロジェクト管理、TODO管理、エディタ機能を一元化します。
+Neovimのいろんな設定
 
 ## 依存関係
 
