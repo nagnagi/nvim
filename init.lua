@@ -1,10 +1,16 @@
-vim.loader.enable()
+-- vim config
+require("option")
+require("autocmd")
+require("command")
 
-vim.g.mapleader = "\\"
-vim.g.maplocalleader = "\\"
+-- layout
+require("layout")
 
--- plugin settings
-require("config.lazy")
--- user settings
-require("user.init")
+-- vibe coding
+require("vibe")
+
+-- keymap
+require("keymap.ckeymap")
+require("keymap.ikeymap")
+require("keymap.nkeymap")
 
