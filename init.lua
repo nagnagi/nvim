@@ -1,16 +1,19 @@
 -- vim config
-require("option")
-require("autocmd")
-require("command")
+require("config.option")
+require("config.autocmd")
+require("config.command")
 
 -- layout
-require("layout")
+require("config.layout")
 
 -- vibe coding
-require("vibe")
+require("config.vibe")
 
 -- keymap
-require("keymap.ckeymap")
-require("keymap.ikeymap")
-require("keymap.nkeymap")
+require("config.keymap.ckeymap")
+require("config.keymap.ikeymap")
+require("config.keymap.nkeymap")
+
+-- plugins
+require("filer")
 
