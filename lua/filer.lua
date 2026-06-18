@@ -67,6 +67,35 @@ local function get_cursor_file(files, ewin)
   return files[idx], idx
 end
 
+local function expand_directory(files, idx)
+  local this = files[idx]
+  this.open = true
+  local up = vim.list_slice(files, 0, idx)
+  local this_files = vim.tbl_map(
+    function (f)
+      return { name = this.name .. "/" .. f.name, type = f.type, depth = f.depth, open = f.open }
+    end, get_files(this.name, this.depth + 1))
+  local down = vim.list_slice(files, idx + 1)
+
+  return vim.list_extend(vim.list_extend(up, this_files), down)
+end
+
+local function contract_directory(files, idx)
+  local this = files[idx]
+  local count = 0;
+  this.open = false
+  for i = idx + 1, #files, 1 do
+    if files[i].depth <= this.depth then
+      break
+    end
+    count = count + 1
+  end
+  
+  local up = vim.list_slice(files, 0, idx)
+  local down = vim.list_slice(files, idx + count + 1)
+  return vim.list_extend(up, down)
+end
+
 local function close_filer()
   if _EWIN then
     vim.api.nvim_win_close(_EWIN, true)
@@ -105,15 +134,7 @@ local function open_filer()
       end
       print(this.name)
       if this.type == "directory" and not this.open then
-        this.open = true
-        local up = vim.list_slice(files, 0, idx)
-        local this_files = vim.tbl_map(
-          function (f)
-            return { name = this.name .. "/" .. f.name, type = f.type, depth = f.depth, open = false }
-          end, get_files(this.name, this.depth + 1))
-        local down = vim.list_slice(files, idx + 1)
-
-        files = vim.list_extend(vim.list_extend(up, this_files), down)
+        files = expand_directory(files, idx)
         lines = create_explorer_format(files, cwd)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
       elseif this.type == "file" then
@@ -130,14 +151,8 @@ local function open_filer()
       if not this then
         return
       end
-      print(this.name)
       if this.type == "directory" and this.open then
-        this.open = false
-        local up = vim.list_slice(files, 0, idx)
-        local this_files = get_files(this.name, this.depth + 1)
-        local down = vim.list_slice(files, idx + #this_files + 1)
-
-        files = vim.list_extend(up, down)
+        files = contract_directory(files, idx)
         lines = create_explorer_format(files, cwd)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
       end
