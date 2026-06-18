@@ -1,0 +1,15 @@
+services:
+  dev:
+    build: .
+    container_name: purenvim-dev
+    volumes:
+      - .:/root/.config/nvim
+    networks:
+      - default
+    tty: true
+    stdin_open: true
+
+networks:
+  default:
+    driver: bridge
+
