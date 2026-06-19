@@ -125,8 +125,11 @@ local function open_filer()
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
+  vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
+
   vim.api.nvim_buf_set_keymap(buf, "n", "l", "", {
     callback = function ()
+      vim.api.nvim_set_option_value('modifiable', true, { buf = buf })
       local this, idx = get_cursor_file(files, _EWIN)
       if not this then
         return
@@ -149,11 +152,13 @@ local function open_filer()
           _EWIN = nil
         end
       end
+      vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
     end
   })
 
   vim.api.nvim_buf_set_keymap(buf, "n", "h", "", {
     callback = function ()
+      vim.api.nvim_set_option_value('modifiable', true, { buf = buf })
       local this, idx = get_cursor_file(files, _EWIN)
       if not this then
         return
@@ -163,6 +168,7 @@ local function open_filer()
         lines = create_explorer_format(files, cwd)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
       end
+      vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
     end
   })
 
