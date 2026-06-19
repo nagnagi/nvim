@@ -98,7 +98,9 @@ end
 
 local function close_filer()
   if _EWIN then
-    vim.api.nvim_win_close(_EWIN, true)
+    if vim.api.nvim_win_is_valid(_EWIN) then
+      vim.api.nvim_win_close(_EWIN, true)
+    end
     _EWIN = nil
   end
 end
@@ -109,7 +111,6 @@ local function open_filer()
   local lines = create_explorer_format(files, cwd)
 
   local buf = vim.api.nvim_create_buf(false, true)
-
   local pwin = vim.api.nvim_get_current_win()
 
   local width = math.min(40, vim.o.columns - 10)
@@ -173,7 +174,7 @@ local function open_filer()
 end
 
 vim.api.nvim_create_user_command("PureExOpen", function ()
-  if not _EWIN then
+  if not _EWIN or not vim.api.nvim_win_is_valid(_EWIN) then
     open_filer()
   end
 end, {})
