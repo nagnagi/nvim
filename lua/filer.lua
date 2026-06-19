@@ -255,6 +255,49 @@ local function open_filer()
         lines = create_explorer_format(files, cwd)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
       end)
+      vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
+    end
+  })
+
+  vim.api.nvim_buf_set_keymap(buf, "n", "<S-a>", "", {
+    callback = function ()
+      vim.api.nvim_set_option_value('modifiable', true, { buf = buf })
+      local this, idx = get_cursor_file(files, _EWIN)
+
+      local dir
+      local depth
+      if this.type == "file" then
+        dir = get_dir_by_file(this.name)
+        depth = this.depth
+      elseif this.type == "directory" then
+        dir = this.name
+        depth = this.depth + 1
+      else
+        return
+      end
+
+      vim.ui.input({ prompt = "Create a new directory " .. dir .. "/" }, function (input)
+        if not input then
+          print("abort!")
+          return
+        end
+        local file = {
+          name = dir .. "/" .. input,
+          type = "directory",
+          open = false,
+          depth = depth,
+        }
+        if vim.fn.filereadable(file.name) == 1 or vim.fn.isdirectory(file.name) == 1 then
+          print("file already exists!")
+          return
+        end
+        vim.fn.mkdir(file.name)
+        print(file.name .. " created.")
+        files = insert_file(files, file)
+        lines = create_explorer_format(files, cwd)
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+      end)
+      vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
     end
   })
 
