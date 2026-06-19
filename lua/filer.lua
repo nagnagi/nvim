@@ -221,6 +221,9 @@ local function open_filer()
     callback = function ()
       vim.api.nvim_set_option_value('modifiable', true, { buf = buf })
       local this, idx = get_cursor_file(files, _EWIN)
+      if not this then
+        return
+      end
 
       local dir
       local depth
@@ -263,6 +266,9 @@ local function open_filer()
     callback = function ()
       vim.api.nvim_set_option_value('modifiable', true, { buf = buf })
       local this, idx = get_cursor_file(files, _EWIN)
+      if not this then
+        return
+      end
 
       local dir
       local depth
@@ -292,8 +298,48 @@ local function open_filer()
           return
         end
         vim.fn.mkdir(file.name)
-        print(file.name .. " created.")
+        print(file.name .. " was created.")
         files = insert_file(files, file)
+        lines = create_explorer_format(files, cwd)
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+      end)
+      vim.api.nvim_set_option_value('modifiable', false, { buf = buf })
+    end
+  })
+
+  vim.api.nvim_buf_set_keymap(buf, "n", "d", "", {
+    callback = function ()
+      vim.api.nvim_set_option_value('modifiable', true, { buf = buf })
+      local this, idx = get_cursor_file(files, _EWIN)
+      if not this or not idx then
+        return
+      end
+
+      vim.ui.input({ prompt = "Remove " .. this.name .. " (Y/n):" }, function (input)
+        if not input then
+          print("abort")
+          return
+        end
+        if input == "n" then
+          print("abort")
+          return
+        end
+
+        local success
+        if this.type == "directory" then
+          files = contract_directory(files, idx)
+          table.remove(files, idx)
+          success = vim.fn.delete(this.name, "rf")
+        else
+          table.remove(files, idx)
+          success = vim.fn.delete(this.name)
+        end
+        if success then
+          print(this.name .. " was deleted.")
+        else
+          print("error!")
+          return
+        end
         lines = create_explorer_format(files, cwd)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
       end)
