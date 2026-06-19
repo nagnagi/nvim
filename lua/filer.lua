@@ -90,7 +90,7 @@ local function contract_directory(files, idx)
     end
     count = count + 1
   end
-  
+
   local up = vim.list_slice(files, 0, idx)
   local down = vim.list_slice(files, idx + count + 1)
   return vim.list_extend(up, down)
@@ -108,13 +108,13 @@ local function open_filer()
   local cwd = get_filename(vim.fn.getcwd())
   local lines = create_explorer_format(files, cwd)
 
-  local buf = vim.api.nvim_create_buf(true, true)
+  local buf = vim.api.nvim_create_buf(false, true)
 
   local pwin = vim.api.nvim_get_current_win()
 
   local width = math.min(40, vim.o.columns - 10)
   local height = vim.o.lines
-  local win = vim.api.nvim_open_win(buf, true, {
+  _EWIN = vim.api.nvim_open_win(buf, true, {
     split = "left",
     width = width,
     height = height,
@@ -122,13 +122,11 @@ local function open_filer()
     style = "minimal",
   })
 
-  _EWIN = win
-
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
   vim.api.nvim_buf_set_keymap(buf, "n", "l", "", {
     callback = function ()
-      local this, idx = get_cursor_file(files, win)
+      local this, idx = get_cursor_file(files, _EWIN)
       if not this then
         return
       end
@@ -139,15 +137,23 @@ local function open_filer()
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
       elseif this.type == "file" then
         local b = vim.fn.bufadd(this.name)
-        vim.api.nvim_win_set_buf(pwin, b)
-        vim.api.nvim_set_current_win(pwin)
+        if vim.api.nvim_win_is_valid(pwin) then
+          vim.api.nvim_win_set_buf(pwin, b)
+          vim.api.nvim_set_current_win(pwin)
+        else
+          pwin = vim.api.nvim_open_win(b, true, {
+            split = "right",
+          })
+          vim.api.nvim_win_close(_EWIN, true)
+          _EWIN = nil
+        end
       end
     end
   })
 
   vim.api.nvim_buf_set_keymap(buf, "n", "h", "", {
     callback = function ()
-      local this, idx = get_cursor_file(files, win)
+      local this, idx = get_cursor_file(files, _EWIN)
       if not this then
         return
       end
