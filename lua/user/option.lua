@@ -3,6 +3,11 @@ vim.opt.number = true
 vim.opt.clipboard = "unnamedplus"
 vim.o.updatetime = 1000
 vim.env.MASON_PYTHON = "/home/nag/.local/bin/python3.13"
+vim.o.exrc = true
+vim.o.secure = true
+
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '> ', eol = '$' }
 
 -- fold settings
 -- vim.o.foldenable = true
@@ -10,10 +15,10 @@ vim.env.MASON_PYTHON = "/home/nag/.local/bin/python3.13"
 -- vim.opt.foldcolumn = "1"
 -- vim.o.foldlevel = 99
 -- vim.opt.fillchars:append({
---     fold = " ",
---     foldopen = "",
---     foldsep = " ",
---     foldclose = "",
+    -- fold = " ",
+    -- foldopen = "v",
+    -- foldsep = " ",
+    -- foldclose = ">",
 -- })
 
 -- indent
@@ -30,6 +35,8 @@ vim.opt.incsearch = true
 -- cursor
 vim.opt.cursorline = true
 -- opt.cursorculumn = true
+vim.o.scrolloff = 10
+vim.o.scrolljump = 20
 
 -- color
 vim.opt.termguicolors = true
