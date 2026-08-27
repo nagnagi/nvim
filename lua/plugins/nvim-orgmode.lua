@@ -12,7 +12,7 @@ return {
     local org_dir = '~/org'
 
     require('orgmode').setup({
-      org_agenda_files = org_dir .. '/agenda/*',
+      org_agenda_files = org_dir .. '/agenda/**/*',
       org_default_notes_file = org_dir .. '/journal.org',
       org_todo_keywords = {'TODO(t)', 'NEXT(n)', 'WAITING(w)', 'INPROGRESS(p)',  '|', 'DONE(d)', 'CANCELLED(c)'},
       org_startup_indented = true,
