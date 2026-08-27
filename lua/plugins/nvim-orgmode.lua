@@ -8,20 +8,29 @@ return {
   },
   config = function()
     -- orgmodeの初期化と基本設定
+    local orgmode   = require('orgmode')
+    local telescope = require('telescope')
     
     local org_dir = '~/org'
 
-    require('orgmode').setup({
-      org_agenda_files = org_dir .. '/agenda/**/*',
-      org_default_notes_file = org_dir .. '/journal.org',
-      org_todo_keywords = {'TODO(t)', 'NEXT(n)', 'WAITING(w)', 'INPROGRESS(p)',  '|', 'DONE(d)', 'CANCELLED(c)'},
+    orgmode.setup({
+      org_agenda_files = org_dir .. '/**/*',
+      org_archive_location = org_dir .. '/archive/default.org',
+      org_default_notes_file = org_dir .. '/refine.org',
+      org_hide_leading_stars = false,
+      org_log_repeat = false,
       org_startup_indented = true,
+      og_startup_folded = 'content',
+      org_highlight_latex_and_related = 'entities',
+      org_agenda_span = 'week',
+      org_edit_src_content_indentation = 2,
       org_todo_keyword_faces = {
-        INPROGRESS = ':foreground blue :weight bold',
+        INPROGRESS = ':foreground blue :weight bold :slant italic',
         WAITING = ':foreground gray :weight bold',
         NEXT = ':foreground yellow :weight bold',
+        CANCELLED = ':foreground gray',
       },
-      org_hide_leading_stars = true,
+      org_todo_keywords = {'TODO(t)', 'NEXT(n)', 'WAITING(w)', 'INPROGRESS(p)',  '|', 'DONE(d)', 'CANCELLED(c)'},
       org_capture_templates = {
         c = {
           description = 'Capture',
@@ -29,14 +38,14 @@ return {
         },
         t = {
           description = 'Task',
-          target = org_dir .. '/agenda.org',
+          target = org_dir .. '/agenda/task.org',
           headline = 'Inbox',
           template = '* TODO [#C] %?\n  SCHEDULED: %T\n  :PROPERTIES:\n  :CREATED:  %U\n  :END:\n',
         },
-        n = {
+        j = {
           description = 'Journal',
           target = org_dir .. '/journal.org',
-          template = "\n* %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n\n** Task\n\n** ミーティング\n\n** 反省\n\n",
+          template = "\n* %<%Y-%m-%d %A> %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n\n** Task\n\n** Meeting\n\n** Reflection\n\n** Next\n\n",
         },
       },
     })
@@ -47,33 +56,35 @@ return {
     vim.cmd("Org indent_mode")
     
     -- Load telescope-orgmode extension
-    require('telescope').load_extension('orgmode')
+    telescope.load_extension('orgmode')
     
     -- Org mode specific keymaps
     vim.keymap.set('n', '<leader>fo', function()
-      require('telescope').extensions.orgmode.search_headings({})
+      telescope.extensions.orgmode.search_headings({})
     end, { desc = 'Search Org headings' })
     
     vim.keymap.set('n', '<leader>fr', function()
-      require('telescope').extensions.orgmode.refile_heading()
+      telescope.extensions.orgmode.refile_heading()
     end, { desc = 'Refile heading' })
     
     vim.keymap.set('n', '<leader>fl', function()
-      require('telescope').extensions.orgmode.insert_link()
+      telescope.extensions.orgmode.insert_link()
     end, { desc = 'Insert link' })
     
     vim.keymap.set('n', '<leader>ft', function()
-      require('telescope').extensions.orgmode.search_tags({ initial_sort = 'frequency' })
+      telescope.extensions.orgmode.search_tags({ initial_sort = 'frequency' })
     end, { desc = 'Search tags by frequency' })
     
     -- TODO status cycling keymap (using orgmode Lua API)
     vim.keymap.set('n', '<leader>os', function()
-      require('orgmode').action('org_mappings.todo_next_state')
+      orgmode.action('org_mappings.todo_next_state')
     end, { desc = 'Cycle TODO status forward' })
 
     vim.keymap.set('n', '<leader>of', function()
-      require('orgmode').action('org_mappings.toggle_checkbox')
+      orgmode.action('org_mappings.toggle_checkbox')
     end, { desc = 'Org Toggle Checkbox' })
+
+    vim.cmd[[autocmd ColorScheme * hi link @org.leading.stars MyCustomHlGroup]]
 
     vim.api.nvim_create_autocmd('FileType', {
       pattern = 'org',
