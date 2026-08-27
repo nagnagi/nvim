@@ -8,9 +8,12 @@ return {
   },
   config = function()
     -- orgmodeの初期化と基本設定
+    
+    local org_dir = '~/org'
+
     require('orgmode').setup({
-      org_agenda_files = '~/org/**/*',
-      org_default_notes_file = '~/org/refile.org',
+      org_agenda_files = org_dir .. '/agenda/*',
+      org_default_notes_file = org_dir .. '/journal.org',
       org_todo_keywords = {'TODO(t)', 'NEXT(n)', 'WAITING(w)', 'INPROGRESS(p)',  '|', 'DONE(d)', 'CANCELLED(c)'},
       org_startup_indented = true,
       org_todo_keyword_faces = {
@@ -26,26 +29,14 @@ return {
         },
         t = {
           description = 'Task',
-          template = '* TODO [#C] %?\n  SCHEDULED: %T\n  :PROPERTIES:\n  :CREATED:  %U\n  :END:\n',
-          target = '~/orgfiles/tasks/tasks.org',
+          target = org_dir .. '/agenda.org',
           headline = 'Inbox',
+          template = '* TODO [#C] %?\n  SCHEDULED: %T\n  :PROPERTIES:\n  :CREATED:  %U\n  :END:\n',
         },
         n = {
-          description = 'Note',
-          template = [[
-* %?
-  :PROPERTIES:
-  :CREATED: %U
-  :END:
-
-** Abstract
-
-
-** Main
-
-
-]],
-          target = '~/orgfiles/notes/notes.org',
+          description = 'Journal',
+          target = org_dir .. '/journal.org',
+          template = "\n* %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n\n** Task\n\n** ミーティング\n\n** 反省\n\n",
         },
       },
     })
