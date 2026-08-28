@@ -16,7 +16,7 @@ return {
     orgmode.setup({
       org_agenda_files = org_dir .. '/**/*',
       org_archive_location = org_dir .. '/archive/default.org',
-      org_default_notes_file = org_dir .. '/refine.org',
+      org_default_notes_file = org_dir .. '/refile.org',
       org_hide_leading_stars = false,
       org_log_repeat = false,
       org_startup_indented = true,
