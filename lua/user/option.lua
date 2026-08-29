@@ -35,7 +35,7 @@ vim.opt.incsearch = true
 -- cursor
 vim.opt.cursorline = true
 -- opt.cursorculumn = true
-vim.o.scrolloff = 10
+vim.o.scrolloff = 5
 vim.o.scrolljump = 20
 
 -- color
