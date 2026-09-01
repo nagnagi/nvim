@@ -39,12 +39,12 @@ return {
         t = {
           description = 'Task',
           target = org_dir .. '/agenda/task.org',
-          template = '* TODO [#C] %?\n  SCHEDULED: %t\n  :PROPERTIES:\n  :CREATED:  %U\n  :END:\n',
+          template = '* TODO [#C] %?\nSCHEDULED: %t\n:PROPERTIES:\n:CREATED:  %U\n  :END:\n',
         },
         j = {
           description = 'Journal',
           target = org_dir .. '/journal.org',
-          template = "\n* %<%Y-%m-%d %A> %?\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n\n** Task\n\n** Meeting\n\n** Reflection\n\n** Next\n\n",
+          template = "\n* %<%Y-%m-%d %A> %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n** Task\n\n** Meeting\n\n** Reflection\n\n** Next\n\n",
         },
       },
     })

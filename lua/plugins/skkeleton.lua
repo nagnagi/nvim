@@ -54,9 +54,8 @@ return {
       })
 
       local opt = {}
-      vim.api.nvim_set_keymap("i", "<C-k>", "<Plug>(skkeleton-toggle)", opt)
-      vim.api.nvim_set_keymap("c", "<C-k>", "<Plug>(skkeleton-toggle)", opt)
-      vim.api.nvim_set_keymap("n", "<C-k>", "i<Plug>(skkeleton-enable)", opt)
+      vim.api.nvim_set_keymap("c", "<C-j>", "<Plug>(skkeleton-toggle)", opt)
+      vim.api.nvim_set_keymap("n", "<C-j>", "i<Plug>(skkeleton-enable)", opt)
       
       vim.api.nvim_create_autocmd("User", {
         pattern = "skkeleton-enable-pre",
