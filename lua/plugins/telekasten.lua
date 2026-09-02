@@ -11,8 +11,8 @@ return {
       templates = vim.fn.expand("~/zettelkasten/templates"),
       media = vim.fn.expand("~/zettelkasten/media"),
       tags = vim.fn.expand("~/zettelkasten/tags"),
-      weeklies = vim.fn.expand("~/zk/weekly"),
-      todolist = vim.fn.expand("~/zk/todo")
+      weeklies = vim.fn.expand("~/zettelkasten/weekly"),
+      todolist = vim.fn.expand("~/zettelkasten/todo")
 
     })
 
