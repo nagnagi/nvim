@@ -30,7 +30,7 @@ return {
     vim.keymap.set("n", "<leader>mI", "<cmd>Telekasten insert_img_link<CR>")
 
     -- Call insert link automatically when we start typing a link
-    vim.keymap.set("i", "<leader>ml", "<cmd>Telekasten insert_link<CR>")
+    vim.keymap.set("n", "<leader>ml", "<cmd>Telekasten insert_link<CR>")
 
   end
 }
