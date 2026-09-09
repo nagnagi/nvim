@@ -4,7 +4,7 @@ return {
   config = function()
     require("toggleterm").setup{
       -- size can be a number or function which is passed the current terminal
-      size = 60,
+      -- size = 60,
       open_mapping = [[<leader>tt]], -- or { [[<c-\>]], [[<c-¥>]] } if you also use a Japanese keyboard.
       hide_numbers = true, -- hide the number column in toggleterm buffers
       shade_filetypes = {},
@@ -15,7 +15,7 @@ return {
       terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
       persist_size = true,
       persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
-      direction = 'float',
+      direction = 'horizontal',
       close_on_exit = true, -- close the terminal window when the process exits
       clear_env = false, -- use only environmental variables from `env`, passed to jobstart()
        -- Change the default shell. Can be a string or a function returning a string
@@ -37,12 +37,21 @@ return {
 
     local Terminal  = require('toggleterm.terminal').Terminal
 
-    -- keybind
-    vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical size=40<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal size=10<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tc", "<cmd>ToggleTerm direction=tab<CR>", { noremap=true, silent=true })
-    vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { noremap=true, silent=true })
+    vim.keymap.set("n", "<leader>tt", function ()
+      vim.cmd(vim.v.count1 .. "ToggleTerm")
+    end, { noremap=true, silent=true, desc="Toggle" })
+    vim.keymap.set("n", "<leader>tv", function ()
+      vim.cmd(vim.v.count1 .. "ToggleTerm direction=vertical size=40")
+    end, { noremap=true, silent=true, desc="Vertical" })
+    vim.keymap.set("n", "<leader>ts", function ()
+      vim.cmd(vim.v.count1 .. "ToggleTerm direction=horizontal size=10")
+    end, { noremap=true, silent=true, desc="Horizontal" })
+    vim.keymap.set("n", "<leader>tc", function ()
+      vim.cmd(vim.v.count1 .. "ToggleTerm direction=tab")
+    end, { noremap=true, silent=true, desc="Tab" })
+    vim.keymap.set("n", "<leader>tf", function ()
+      vim.cmd(vim.v.count1 .. "ToggleTerm direction=float")
+    end, { noremap=true, silent=true, desc="Float" })
 
     function _G.set_terminal_keymaps()
       local opts = {buffer = 0}

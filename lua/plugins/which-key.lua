@@ -2,6 +2,15 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {},
+  keys = {
+    {
+      "<leader>?",
+      function ()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+    }
+  },
   config = function()
     local wk = require("which-key")
 
@@ -62,11 +71,11 @@ return {
 
       -- ===== Terminal =====
       { "<leader>t", group = "terminal" },
-      { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Float" },
-      { "<leader>tv", "<cmd>ToggleTerm direction=vertical size=40 1<cr>", desc = "Vertical" },
-      { "<leader>th", "<cmd>ToggleTerm direction=horizontal size=10 2<cr>", desc = "Horizontal" },
-      { "<leader>tn", "<cmd>ToggleTerm direction=tab 3<cr>", desc = "Tab" },
-      { "<leader>tf", "<cmd>ToggleTerm direction=float 4<cr>", desc = "Float (4)" },
+      -- { "<leader>tt", desc = "Toggle" },
+      -- { "<leader>tv", desc = "Vertical" },
+      -- { "<leader>ts", desc = "Horizontal" },
+      -- { "<leader>tc", desc = "Tab" },
+      -- { "<leader>tf", desc = "Float" },
 
       -- ===== Run (Overseer) =====
       { "<leader>r", group = "run" },
