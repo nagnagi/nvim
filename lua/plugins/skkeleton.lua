@@ -30,7 +30,8 @@ return {
 
     local function setup_skkeleton()
       vim.fn["skkeleton#config"]({
-        globalDictionaries = {dict_path},
+        globalDictionaries = { dict_path },
+        userDictionary = dict_dir .. "/skk-jisyo.utf8",
         keepState = true,
       })
 
@@ -55,7 +56,7 @@ return {
 
       local opt = {}
       vim.api.nvim_set_keymap("c", "<C-j>", "<Plug>(skkeleton-toggle)", opt)
-      vim.api.nvim_set_keymap("n", "<C-j>", "i<Plug>(skkeleton-enable)", opt)
+      vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>(skkeleton-enable)", opt)
       
       vim.api.nvim_create_autocmd("User", {
         pattern = "skkeleton-enable-pre",
