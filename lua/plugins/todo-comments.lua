@@ -43,10 +43,10 @@ return {
     })
 
     -- Telescope統合
-    vim.keymap.set("n", "<leader>sf", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 
     -- Trouble統合
-    vim.keymap.set("n", "<leader>st", "<cmd>Trouble todo<cr>", { desc = "Show todos" })
+    vim.keymap.set("n", "<leader>xt", "<cmd>Trouble todo<cr>", { desc = "Show todos" })
 
     -- ジャンプキー
     vim.keymap.set("n", "<leader>sn", function()

@@ -51,11 +51,20 @@ return {
         col = 1
       },
     }
-    local opt = {}
-    vim.api.nvim_set_keymap("n", "<leader>hn", "<cmd>Gitsigns next_hunk<cr>", opt)
-    vim.api.nvim_set_keymap("n", "<leader>hp", "<cmd>Gitsigns prev_hunk<cr>", opt)
-    vim.api.nvim_set_keymap("n", "<leader>ha", "<cmd>Gitsigns stage_hunk<cr>", opt)
-    vim.api.nvim_set_keymap("n", "<leader>hx", "<cmd>Gitsigns undo_stage_hunk<cr>", opt)
-    vim.api.nvim_set_keymap("n", "<leader>hb", "<cmd>Gitsigns blame<cr>", opt)
+    vim.keymap.set("n", "<leader>hn", "<cmd>Gitsigns next_hunk<cr>", {
+      desc="Next hunk"
+    })
+    vim.keymap.set("n", "<leader>hp", "<cmd>Gitsigns prev_hunk<cr>", {
+      desc="Prev hunk"
+    })
+    vim.keymap.set("n", "<leader>ha", "<cmd>Gitsigns stage_hunk<cr>", {
+      desc="Stage hunk"
+    })
+    vim.keymap.set("n", "<leader>hx", "<cmd>Gitsigns undo_stage_hunk<cr>", {
+      desc="Undo stage hunk"
+    })
+    vim.keymap.set("n", "<leader>hb", "<cmd>Gitsigns blame<cr>", {
+      desc="blame"
+    })
   end
 }

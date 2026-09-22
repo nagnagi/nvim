@@ -73,7 +73,9 @@ return {
       lazygit:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+    vim.keymap.set("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {
+      noremap = true, silent = true, desc="LazyGit"
+    })
     
     -- lazygit
     local lazydocker = Terminal:new({
@@ -86,7 +88,9 @@ return {
       lazydocker:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>lua _lazydocker_toggle()<CR>", {noremap = true, silent = true})
+    vim.keymap.set("n", "<leader>ld", "<cmd>lua _lazydocker_toggle()<CR>", {
+      noremap = true, silent = true, desc="LazyDocker"
+    })
 
     -- lazygit
     local gobang = Terminal:new({
@@ -99,7 +103,9 @@ return {
       gobang:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>lb", "<cmd>lua _gobang_toggle()<CR>", {noremap = true, silent = true})
+    vim.keymap.set("n", "<leader>lb", "<cmd>lua _gobang_toggle()<CR>", {
+      noremap = true, silent = true, desc="GoBang"
+    })
 
     -- lazysql
     local lazysql = Terminal:new({
@@ -112,7 +118,9 @@ return {
       lazysql:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>lua _lazysql_toggle()<CR>", {noremap = true, silent = true})
+    vim.keymap.set("n", "<leader>ls", "<cmd>lua _lazysql_toggle()<CR>", {
+      noremap = true, silent = true, desc="LazySQL"
+    })
 
     -- gh dash
     local gh_dash = Terminal:new({
@@ -125,7 +133,9 @@ return {
       gh_dash:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>lh", "<cmd>lua _gh_dash_toggle()<CR>", {noremap = true, silent = true})
+    vim.keymap.set("n", "<leader>lh", "<cmd>lua _gh_dash_toggle()<CR>", {
+      noremap = true, silent = true, desc="gh dash"
+    })
   end
 }
 

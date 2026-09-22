@@ -31,17 +31,33 @@ return {
       })
 
 	    -- カーソル下の変数の情報
-	    vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>')
-	    vim.keymap.set('n', 'K', '<cmd>lua vim.diagnostic.open_float(nil, {scope = "line"})<CR>')
+	    vim.keymap.set('n', 'K', function ()
+	      vim.lsp.buf.hover()
+	    end, {
+        desc="Open information"
+      })
+	    vim.keymap.set('n', '<leader>k', function ()
+	      vim.diagnostic.open_float(nil, {scope = "line"})
+	    end, { desc="Open diagnostic" })
 	    -- 定義ジャンプ
-	    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+      vim.keymap.set('n', 'gd', function ()
+        vim.lsp.buf.definition()
+      end, { desc="Goto definition" })
 	    -- 定義ジャンプ後に下のファイルに戻る
-	    -- vim.keymap.set('n', 'gt', '<C-t>')
+	    vim.keymap.set('n', 'gt', '<C-t>', {
+        desc="Previous tag stack"
+      })
 	    -- 改行やインデントなどのフォーマット
-	    vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+      vim.keymap.set('n', 'gf', function ()
+        vim.lsp.buf.format()
+      end, { desc="Format" })
 	    -- カーソル下の変数をコード内で参照している箇所
-	    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+      vim.keymap.set('n', 'gr', function ()
+        vim.lsp.buf.references()
+      end, { desc="Reference variable" })
 	    -- 変数名のリネーム
-	    vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+      vim.keymap.set('n', 'gn', function ()
+        vim.lsp.buf.rename()
+      end, { desc="Rename variable" })
     end,
     }

@@ -4,7 +4,9 @@ function _mistral_vibe()
 end
 
 vim.api.nvim_create_user_command("VibeMistralVibe", _mistral_vibe, {})
-vim.api.nvim_set_keymap("n", "<leader>vm", "<cmd>lua _mistral_vibe()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>vm", "<cmd>lua _mistral_vibe()<CR>", {
+  noremap = true, silent = true, desc="Open vibe"
+})
 
 function _gemini_cli()
   vim.cmd("botright vertical terminal gemini", { hide = true })
@@ -12,7 +14,9 @@ function _gemini_cli()
 end
 
 vim.api.nvim_create_user_command("VibeGeminiCLI", _gemini_cli, {})
-vim.api.nvim_set_keymap("n", "<leader>vg", "<cmd>lua _gemini_cli()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>vg", "<cmd>lua _gemini_cli()<CR>", {
+  noremap = true, silent = true, desc="Open gemini CLI"
+})
 
 function _copilot_cli()
   vim.cmd("botright vertical terminal copilot", { hide = true })
@@ -20,5 +24,7 @@ function _copilot_cli()
 end
 
 vim.api.nvim_create_user_command("VibeCopilotCLI", _copilot_cli, {})
-vim.api.nvim_set_keymap("n", "<leader>vc", "<cmd>lua _copilot_cli()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>vc", "<cmd>lua _copilot_cli()<CR>", {
+  noremap = true, silent = true, desc="Open copilot CLI"
+})
 

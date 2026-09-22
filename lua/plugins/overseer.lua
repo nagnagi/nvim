@@ -1,10 +1,10 @@
 return {
   'stevearc/overseer.nvim',
-  lazy = false,
+  lazy = "verylazy",
   keys = {
-    { "<leader>rr", "<CMD>OverseerRun<CR>" },
-    { "<leader>ro", "<CMD>OverseerOpen<CR>" },
-    { "<leader>rt", "<CMD>OverseerToggle<CR>" },
+    { "<leader>rr", "<CMD>OverseerRun<CR>", desc="Run task" },
+    { "<leader>ro", "<CMD>OverseerOpen<CR>", desc="Toggle" },
+    { "<leader>rt", "<CMD>OverseerToggle<CR>", desc="Open Overseer Menu" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim"

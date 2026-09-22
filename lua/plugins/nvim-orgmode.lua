@@ -75,13 +75,21 @@ return {
     end, { desc = 'Search tags by frequency' })
     
     -- TODO status cycling keymap (using orgmode Lua API)
-    vim.keymap.set('n', '<leader>os', function()
+    vim.keymap.set('n', '<leader>ct', function()
       orgmode.action('org_mappings.todo_next_state')
     end, { desc = 'Cycle TODO status forward' })
 
     vim.keymap.set('n', '<leader>of', function()
       orgmode.action('org_mappings.toggle_checkbox')
     end, { desc = 'Org Toggle Checkbox' })
+
+    vim.keymap.set('n', '<leader>oa', '<cmd>Org agenda<cr>', {
+      desc="Org agenda"
+    })
+
+    vim.keymap.set('n', '<leader>oc', '<cmd>Org capture<cr>', {
+      desc="Org capture"
+    })
 
     vim.cmd[[autocmd ColorScheme * hi link @org.leading.stars MyCustomHlGroup]]
 

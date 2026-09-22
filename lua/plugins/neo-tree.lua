@@ -24,12 +24,26 @@ return {
     },
   },
   config = function ()
-	  vim.keymap.set("n", "<leader>ee", ":Neotree filesystem reveal focus<cr>")
-	  vim.keymap.set("n", "<leader>ef", ":Neotree filesystem float<cr>")
-    vim.keymap.set("n", "<leader>eh", ":Neotree filesystem left<cr>")
-    vim.keymap.set("n", "<leader>el", ":Neotree filesystem right<cr>")
-    vim.keymap.set("n", "<leader>et", ":Neotree toggle<cr>")
-    vim.keymap.set("n", "<leader>eb", ":Neotree buffers reveal<cr>")
-    vim.keymap.set("n", "<leader>es", ":Neotree show<cr>")
+	  vim.keymap.set("n", "<leader>ee", ":Neotree filesystem reveal focus<cr>", {
+      desc="Reveal focus"
+    })
+	  vim.keymap.set("n", "<leader>ef", ":Neotree filesystem float<cr>", {
+      desc="Float"
+    })
+    vim.keymap.set("n", "<leader>eh", ":Neotree filesystem left<cr>", {
+      desc="Left"
+    })
+    vim.keymap.set("n", "<leader>el", ":Neotree filesystem right<cr>", {
+      desc="Right"
+    })
+    vim.keymap.set("n", "<leader>et", ":Neotree toggle<cr>", {
+      desc="Toggle"
+    })
+    vim.keymap.set("n", "<leader>eb", ":Neotree buffers reveal<cr>", {
+      desc="Buffers"
+    })
+    vim.keymap.set("n", "<leader>es", ":Neotree show<cr>", {
+      desc="Show"
+    })
   end,
 }
