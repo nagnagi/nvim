@@ -27,6 +27,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.cindent = true
+vim.o.fixendofline = true
+vim.o.endofline = true
 
 -- search
 vim.opt.hlsearch = true

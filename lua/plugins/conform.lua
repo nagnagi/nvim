@@ -14,7 +14,7 @@ return {
 			},
 		})
 
-    vim.keymap.set("n", "<leader>gf", function() require("conform").format({ async = true }) end)
+    vim.keymap.set("n", "gf", function() require("conform").format({ async = true }) end, { desc = "Format" })
 	end,
 }
 
