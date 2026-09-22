@@ -48,9 +48,9 @@ return {
         desc="Previous tag stack"
       })
 	    -- 改行やインデントなどのフォーマット
-      vim.keymap.set('n', 'gf', function ()
-        vim.lsp.buf.format()
-      end, { desc="Format" })
+      -- vim.keymap.set('n', 'gf', function ()
+      --   vim.lsp.buf.format()
+      -- end, { desc="Format" })
 	    -- カーソル下の変数をコード内で参照している箇所
       vim.keymap.set('n', 'gr', function ()
         vim.lsp.buf.references()
