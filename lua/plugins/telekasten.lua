@@ -12,8 +12,12 @@ return {
       media = vim.fn.expand("~/zettelkasten/media"),
       tags = vim.fn.expand("~/zettelkasten/tags"),
       weeklies = vim.fn.expand("~/zettelkasten/weekly"),
-      todolist = vim.fn.expand("~/zettelkasten/todo")
+      todolist = vim.fn.expand("~/zettelkasten/todo"),
 
+      template_new_note = vim.fn.expand("~/zettelkasten/templates/permanent.md"),
+      template_new_weekly = vim.fn.expand("~/zettelkasten/templates/directive.md"),
+
+      install_syntax = false,
     })
 
     -- Launch panel if nothing is typed after <leader>z
