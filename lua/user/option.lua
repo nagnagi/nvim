@@ -15,10 +15,10 @@ vim.o.secure = true
 -- vim.opt.foldcolumn = "1"
 -- vim.o.foldlevel = 99
 -- vim.opt.fillchars:append({
-    -- fold = " ",
-    -- foldopen = "v",
-    -- foldsep = " ",
-    -- foldclose = ">",
+--     fold = " ",
+--     foldopen = "v",
+--     foldsep = " ",
+--     foldclose = ">",
 -- })
 
 -- indent

@@ -84,7 +84,7 @@ return {
           enable_skk()
         end
       end, { desc = "Toggle SKK" })
-      
+
       vim.api.nvim_create_autocmd("User", {
         pattern = "skkeleton-enable-pre",
         callback = function()
