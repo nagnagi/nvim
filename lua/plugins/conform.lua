@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	org = {},
-	config = function()
+	config = function ()
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -14,7 +14,8 @@ return {
 			},
 		})
 
-    vim.keymap.set("n", "gf", function() require("conform").format({ async = true }) end, { desc = "Format" })
+		vim.keymap.set("n", "gf", function ()
+			require("conform").format({ async = true })
+		end, { desc = "Format" })
 	end,
 }
-

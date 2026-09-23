@@ -3,6 +3,8 @@ return {
 		"kaarmu/typst.vim",
 		ft = "typst",
 		lazy = false,
-		config = function () vim.g.typst_pdf_viewer = "evince" end,
+		config = function ()
+			vim.g.typst_pdf_viewer = "evince"
+		end,
 	},
 }

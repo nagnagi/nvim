@@ -7,4 +7,3 @@ vim.g.maplocalleader = "\\"
 require("config.lazy")
 -- user settings
 require("user.init")
-

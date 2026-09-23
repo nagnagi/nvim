@@ -10,53 +10,52 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"L3MON4D3/LuaSnip",
 	},
-  config = function ()
-    local cmp = require("cmp")
-    local types = require('cmp.types')
-	  vim.opt.completeopt = { "menu", "menuone", "noselect" }
-    cmp.setup({
-      enabled = function ()
-        if vim.fn.exists("*skkeleton#is_enabled") == 1 then
-          return vim.fn["skkeleton#is_enabled"]() ~= true
-        end
-        return true
-      end,
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-        end,
-      },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-      mapping = cmp.mapping.preset.insert({
-        -- <C-n>: down, <C-p>: up
-        ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-e>"] = cmp.mapping.abort(),
-	      ["<C-l>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      }),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-	      -- { name = "nvim_lsp_signature_help"},
-        { name = "luasnip" }, -- For luasnip users.
-        { name = "orgmode" },
-      }, {
-        { name = "buffer" },
-        { name = "path" },
-        { name = "skkeleton" },
-      }),
-      performance = {
-        fetching_timeout = 2000,
-      },
-      experimental = {
-	      ghost_text = true,
-      },
-    })
-
-  end
+	config = function ()
+		local cmp = require("cmp")
+		local types = require("cmp.types")
+		vim.opt.completeopt = { "menu", "menuone", "noselect" }
+		cmp.setup({
+			enabled = function ()
+				if vim.fn.exists("*skkeleton#is_enabled") == 1 then
+					return vim.fn["skkeleton#is_enabled"]() ~= true
+				end
+				return true
+			end,
+			snippet = {
+				expand = function (args)
+					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+				end,
+			},
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
+			mapping = cmp.mapping.preset.insert({
+				-- <C-n>: down, <C-p>: up
+				["<Tab>"] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
+				["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-e>"] = cmp.mapping.abort(),
+				["<C-l>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			}),
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "nvim_lua" },
+				-- { name = "nvim_lsp_signature_help"},
+				{ name = "luasnip" }, -- For luasnip users.
+				{ name = "orgmode" },
+			}, {
+				{ name = "buffer" },
+				{ name = "path" },
+				{ name = "skkeleton" },
+			}),
+			performance = {
+				fetching_timeout = 2000,
+			},
+			experimental = {
+				ghost_text = true,
+			},
+		})
+	end,
 }

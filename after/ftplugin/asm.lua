@@ -3,5 +3,4 @@ vim.opt_local.shiftwidth = 8
 vim.opt_local.expandtab = false
 
 vim.opt_local.list = true
-vim.opt_local.listchars = { tab = '> ', eol = '$' }
-
+vim.opt_local.listchars = { tab = "> ", eol = "$" }

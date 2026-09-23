@@ -46,4 +46,3 @@ vim.cmd("colorscheme catppuccin-mocha")
 
 -- plugin
 vim.cmd("packadd nvim.undotree")
-
