@@ -4,6 +4,9 @@ return {
     'vim-denops/denops.vim',
     'nvim-lua/plenary'
   },
+  init = function ()
+    vim.g.skk_enabled = false
+  end,
   config = function ()
     local curl = require("plenary.curl")
     local dict_dir = vim.fn.expand("~/.skk")
@@ -54,9 +57,33 @@ return {
         ['j.'] = {'.'},
       })
 
-      local opt = {}
-      vim.keymap.set("c", "<C-j>", "<Plug>(skkeleton-toggle)", opt)
-      vim.keymap.set("i", "<C-j>", "<Plug>(skkeleton-enable)", opt)
+      local function enable_skk()
+        vim.g.skk_enabled = true
+
+        vim.keymap.set("c", "<C-j>", "<Plug>(skkeleton-enable)")
+        vim.keymap.set("i", "<C-j>", "<Plug>(skkeleton-enable)")
+        require("lualine").refresh()
+      end
+
+      local function disable_skk()
+        vim.g.skk_enabled = false
+
+        vim.api.nvim_feedkeys(
+          vim.api.nvim_replace_termcodes("<Plug>(skkeleton-disable)", true, false, true),
+          "m", false)
+
+        vim.keymap.del("c", "<C-j>")
+        vim.keymap.del("i", "<C-j>")
+        require("lualine").refresh()
+      end
+
+      vim.keymap.set("n", "<leader>xj", function ()
+        if vim.g.skk_enabled then
+          disable_skk()
+        else
+          enable_skk()
+        end
+      end, { desc = "Toggle SKK" })
       
       vim.api.nvim_create_autocmd("User", {
         pattern = "skkeleton-enable-pre",

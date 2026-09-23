@@ -12,10 +12,14 @@ return {
         lualine_a = {
           { 'mode' },
           function ()
-            if vim.fn["skkeleton#is_enabled"]() then
-              return vim.fn["skkeleton#mode"]()
+            if vim.g.skk_enabled then
+              if vim.fn["skkeleton#is_enabled"]() then
+                return vim.fn["skkeleton#mode"]()
+              end
+              return "▽SKK"
+            else
+              return ""
             end
-            return "-"
           end
         }
       }
