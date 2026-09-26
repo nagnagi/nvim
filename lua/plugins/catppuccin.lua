@@ -18,7 +18,8 @@ return {
 					TelescopePromptTitle = { fg = colors.mauve, bg = "none" },
 					TelescopePreviewTitle = { fg = colors.green, bg = "none" },
 					TelescopeResultsTitle = { fg = colors.blue, bg = "none" },
-					FloatBorder = { fg = colors.surface1 }
+					FloatBorder = { fg = colors.surface1 },
+					WinSeparator = { fg = colors.surface1 },
 				}
 			end,
 		})
