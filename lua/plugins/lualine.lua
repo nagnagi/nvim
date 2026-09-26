@@ -16,7 +16,7 @@ return {
 							if vim.fn["skkeleton#is_enabled"]() then
 								return vim.fn["skkeleton#mode"]()
 							end
-							return "▽SKK"
+							return "-"
 						else
 							return ""
 						end

@@ -13,6 +13,18 @@ return {
 		require("noice").setup({
 			-- add any options here
 			views = {
+				hover = {
+					border = { style = "rounded" },
+					win_options = {
+						winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
+					},
+					relative = "editor",
+					position = { row = "0%", col = "100%" },
+					anchor = "auto", -- 画面端で自動反転
+				},
+				signature = {
+					border = { style = "rounded" },
+				},
 				mini = {
 					timeout = 5000,
 				},

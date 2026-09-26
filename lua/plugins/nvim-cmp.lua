@@ -27,8 +27,19 @@ return {
 				end,
 			},
 			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
+				completion = cmp.config.window.bordered({
+					border = "rounded", -- "none" | "single" | "double" | "rounded" | 8文字の配列
+					winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+				}),
+				documentation = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:CmpDoc,FloatBorder:FloatBorder,CursorLine:CmpPmenuSel,Search:None",
+				}),
+				vim.diagnostic.config({
+					float = {
+						border = "rounded",
+					},
+				})
 			},
 			mapping = cmp.mapping.preset.insert({
 				-- <C-n>: down, <C-p>: up
@@ -57,5 +68,7 @@ return {
 				ghost_text = true,
 			},
 		})
+
+		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#89b4fa", bg = "NONE" })
 	end,
 }
