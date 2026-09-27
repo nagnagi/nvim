@@ -19,7 +19,7 @@ return {
 						winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
 					},
 					relative = "editor",
-					position = { row = 0, col = "100%" },
+					position = { row = 0, col = vim.o.columns },
 					anchor = "auto", -- 画面端で自動反転
 				},
 				signature = {
