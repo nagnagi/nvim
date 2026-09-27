@@ -90,7 +90,7 @@ return {
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "skkeleton-enable-pre",
 				callback = function ()
-					require("nvim-autopairs").disable()
+					-- require("nvim-autopairs").disable()
 					require("lualine").refresh()
 				end,
 			})
@@ -98,7 +98,7 @@ return {
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "skkeleton-disable-pre",
 				callback = function ()
-					require("nvim-autopairs").enable()
+					-- require("nvim-autopairs").enable()
 					require("lualine").refresh()
 				end,
 			})
