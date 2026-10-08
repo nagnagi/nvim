@@ -21,15 +21,3 @@ vim.keymap.set("n", "<leader>vg", "<cmd>lua _gemini_cli()<CR>", {
 	silent = true,
 	desc = "Open gemini CLI",
 })
-
-function _copilot_cli ()
-	vim.cmd("botright vertical terminal copilot", { hide = true })
-	vim.cmd("vertical resize 60", { hide = true })
-end
-
-vim.api.nvim_create_user_command("VibeCopilotCLI", _copilot_cli, {})
-vim.keymap.set("n", "<leader>vc", "<cmd>lua _copilot_cli()<CR>", {
-	noremap = true,
-	silent = true,
-	desc = "Open copilot CLI",
-})

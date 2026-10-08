@@ -69,11 +69,11 @@ return {
 			direction = "float",
 		})
 
-		function _lazygit_toggle ()
+		local function lazygit_toggle ()
 			lazygit:toggle()
 		end
 
-		vim.keymap.set("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {
+		vim.keymap.set("n", "<leader>lg", lazygit_toggle, {
 			noremap = true,
 			silent = true,
 			desc = "LazyGit",
@@ -86,11 +86,11 @@ return {
 			direction = "float",
 		})
 
-		function _lazydocker_toggle ()
+		local function lazydocker_toggle ()
 			lazydocker:toggle()
 		end
 
-		vim.keymap.set("n", "<leader>ld", "<cmd>lua _lazydocker_toggle()<CR>", {
+		vim.keymap.set("n", "<leader>ld", lazydocker_toggle, {
 			noremap = true,
 			silent = true,
 			desc = "LazyDocker",
@@ -103,11 +103,11 @@ return {
 			direction = "float",
 		})
 
-		function _gobang_toggle ()
+		local function gobang_toggle ()
 			gobang:toggle()
 		end
 
-		vim.keymap.set("n", "<leader>lb", "<cmd>lua _gobang_toggle()<CR>", {
+		vim.keymap.set("n", "<leader>lb", gobang_toggle, {
 			noremap = true,
 			silent = true,
 			desc = "GoBang",
@@ -120,11 +120,11 @@ return {
 			direction = "float",
 		})
 
-		function _lazysql_toggle ()
+		local function lazysql_toggle ()
 			lazysql:toggle()
 		end
 
-		vim.keymap.set("n", "<leader>ls", "<cmd>lua _lazysql_toggle()<CR>", {
+		vim.keymap.set("n", "<leader>ls", lazysql_toggle, {
 			noremap = true,
 			silent = true,
 			desc = "LazySQL",
@@ -137,14 +137,31 @@ return {
 			direction = "float",
 		})
 
-		function _gh_dash_toggle ()
+		local function gh_dash_toggle ()
 			gh_dash:toggle()
 		end
 
-		vim.keymap.set("n", "<leader>lh", "<cmd>lua _gh_dash_toggle()<CR>", {
+		vim.keymap.set("n", "<leader>lh", gh_dash_toggle, {
 			noremap = true,
 			silent = true,
 			desc = "gh dash",
+		})
+
+		local claude_code = Terminal:new({
+			cmd = "claude",
+			count = 10,
+			hidden = true,
+			direction = "vertical",
+		})
+
+		local function claude_code_toggle ()
+			claude_code:toggle(80, "vertical")
+		end
+
+		vim.keymap.set("n", "<leader>vc", claude_code_toggle, {
+			noremap = true,
+			silent = true,
+			desc = "Open claude code",
 		})
 	end,
 }
