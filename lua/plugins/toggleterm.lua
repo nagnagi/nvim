@@ -163,5 +163,22 @@ return {
 			silent = true,
 			desc = "Open claude code",
 		})
+
+		local mistral_vibe = Terminal:new({
+			cmd = "vibe",
+			count = 11,
+			hidden = true,
+			direction = "vertical",
+		})
+
+		local function mistral_vibe_toggle ()
+			mistral_vibe:toggle(80, "vertical")
+		end
+
+		vim.keymap.set("n", "<leader>vm", mistral_vibe_toggle, {
+			noremap = true,
+			silent = true,
+			desc = "Open vibe",
+		})
 	end,
 }
