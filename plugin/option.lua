@@ -6,6 +6,9 @@ vim.env.MASON_PYTHON = "/home/nag/.local/bin/python3.13"
 vim.o.exrc = true
 vim.o.secure = true
 
+vim.opt.title = true
+vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')} - nvim"
+
 -- vim.opt.list = true
 -- vim.opt.listchars = { tab = '> ', eol = '$' }
 
